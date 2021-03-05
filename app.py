@@ -81,7 +81,7 @@ def predict():
                                  metformin_pioglitazone, change, diabetes_med]])
 
     readmission_chance = prediction[0]
-    response = {'readmission_chance': readmission_chance}
+    response = {'result': readmission_chance}
     print(response)
     return response, 201
 
@@ -89,4 +89,4 @@ def predict():
 if __name__ == "__main__":
     # run method starts our web service
     # Debug : as soon as I save anything in my structure, server should start again
-    app.run(debug=True)
+    app.run(debug=True, port=9999)

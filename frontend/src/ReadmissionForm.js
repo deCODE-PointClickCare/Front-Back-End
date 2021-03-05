@@ -16,7 +16,7 @@ class ReadmissionForm extends Component {
       formData: {
         race: "Caucasian",
         gender: "Female",
-        age: 1,
+        age: "0-10",
         admission_type_id: 1,
         discharge_disposition_id: 1,
         admission_source_id: 1,
@@ -69,7 +69,7 @@ class ReadmissionForm extends Component {
   handlePredictClick = (event) => {
     const formData = this.state.formData;
     this.setState({ isLoading: true });
-    fetch("http://127.0.0.1:5000/prediction/", {
+    fetch("http://127.0.0.1:9999/prediction/", {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -368,13 +368,6 @@ class ReadmissionForm extends Component {
               </Col>
             </Row>
           </Form>
-          {result === "" ? null : (
-            <Row>
-              <Col className="result-container">
-                <h5 id="result">{result}</h5>
-              </Col>
-            </Row>
-          )}
         </div>
       </Container>
     );
