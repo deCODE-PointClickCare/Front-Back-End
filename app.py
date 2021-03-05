@@ -23,7 +23,7 @@ def Home():
 standard_to = StandardScaler()
 
 # this gets called in readmissionform
-@app.route('/add_movie', methods=['POST'])
+@app.route('/predict_model', methods=['POST'])
 def add_movie():
     data = request.get_json()
 

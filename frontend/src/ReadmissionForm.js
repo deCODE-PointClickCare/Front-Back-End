@@ -25,7 +25,7 @@ export const ReadmissionForm = ({ onNewMovie }) => {
         <Button
           onClick={async () => {
             const movie = { title, rating };
-            const response = await fetch("http://localhost:5000/add_movie", {
+            const response = await fetch("http://localhost:5000/predict_model", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json"
