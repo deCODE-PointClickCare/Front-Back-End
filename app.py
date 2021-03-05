@@ -144,4 +144,4 @@ def predict():
 if __name__ == "__main__":
     # run method starts our web service
     # Debug : as soon as I save anything in my structure, server should start again
-    app.run(debug=True)
+    app.run(debug=True, port=9999)
