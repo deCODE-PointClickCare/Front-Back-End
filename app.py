@@ -11,8 +11,8 @@ from sklearn.preprocessing import StandardScaler
 app = Flask(__name__, static_url_path='', static_folder='frontend/build')
 CORS(app) #comment this on deployment
 
-# load the ml model which we have saved earlier in .pkl format
-model = pickle.load(open('car_price_model.pkl', 'rb'))
+# load the ml model which we have saved earlier in .pkl format - rn I'm using Maria's model
+model = pickle.load(open('diabetes_readmission_model.pkl', 'rb'))
 
 @app.route('/', methods=['GET'])
 # create a function Home that will return index.html(which contains html form)
@@ -22,14 +22,69 @@ def Home():
 # creating object for StandardScaler
 standard_to = StandardScaler()
 
+# this gets called in readmissionform
 @app.route('/add_movie', methods=['POST'])
 def add_movie():
-    movie_data = request.get_json()
+    data = request.get_json()
 
-    title=movie_data['title']
+    # all the values from the cleaned data set see: diabetes_readmission_model
+    race = data['Race']
+    gender = data['Gender']
+    age = data['Age']
+    admission_type_id = data['admission_type_id']
+    discharge_disposition_id = data['discharge_disposition_id']
+    admission_source_id = data['admission_source_id']
+    time_in_hospital = data['time_in_hospital']
+    num_lab_procedures = data['num_lab_procedures']
+    num_procedures = data['num_procedures']
+    num_medications = data['num_medications']
+    number_outpatient = data['number_outpatient']
+    number_emergency = data['number_emergency']
+    number_inpatient = data['number_inpatient']
+    diag_1 = data['diag_1']
+    diag_2 = data['diag_2']
+    diag_3 = data['diag_3']
+    number_diagnosis = data['number_diagnosis']
+    max_glu_serum = data['max_glu_serum']
+    a1cresult = data['a1cresult']
+    metformin = data['metformin']
+    repaglinide = data['repaglinide']
+    nateglinide = data['nateglinide']
+    chlorpropamide = data['chlorpropamide']
+    glimepiride = data['glimepiride']
+    acetohexamide = data['acetohexamide']
+    glipizide = data['glipizide']
+    glyburide = data['glyburide']
+    tolbutamide = data['tolbutamide']
+    pioglitazone = data['pioglitazone']
+    rosiglitazone = data['rosiglitazone']
+    acarbose = data['acarbose']
+    miglitol = data['miglitol']
+    troglitazone = data['troglitazone']
+    tolazamide = data['tolazamide']
+    examide = data['examide']
+    citoglipton = data['citoglipton']
+    insulin = data['insulin']
+    glyburide_metformin = data['glyburide_metformin']
+    glipizide_metformin = data['glipizide_metformin']
+    glimepiride_pioglitazone = data['glimepiride_pioglitazone']
+    metformin_rosiglitazone = data['metformin_rosiglitazone']
+    metformin_pioglitazone = data['metformin_pioglitazone']
+    change = data['change']
+    diabetesMed = data['diabetesMed']
 
-    return 'Done' + title, 201
+    prediction = model.predict([[race, gender, age, admission_type_id, discharge_disposition_id, admission_source_id,
+                                 time_in_hospital, num_lab_procedures, num_procedures, num_medications, number_outpatient,
+                                 number_emergency, number_inpatient, diag_1, diag_2, diag_3, number_diagnosis,
+                                 max_glu_serum, a1cresult, metformin, repaglinide, nateglinide, chlorpropamide, glimepiride,
+                                 acetohexamide, glipizide, glyburide, tolbutamide, pioglitazone, rosiglitazone,
+                                 acarbose, miglitol, troglitazone, tolazamide, examide, citoglipton, insulin,
+                                 glyburide_metformin, glipizide_metformin, glimepiride_pioglitazone, metformin_rosiglitazone,
+                                 metformin_pioglitazone, change, diabetesMed]])
 
+    return 'Done', 201
+
+# Use this as an example of how to call the ML models -------------------------
 @app.route("/predict", methods=['POST'])
 # define the predict function which is going to predict the results from ml model based on the given values through html form
 def predict():
