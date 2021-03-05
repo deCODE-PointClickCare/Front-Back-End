@@ -84,7 +84,7 @@ def add_movie():
 
     return 'Done', 201
 
-# Use this as an example of how to call the ML models -------------------------
+# Use this as an example of how to call the ML models ------------------------- delete after we are done with predict_model
 @app.route("/predict", methods=['POST'])
 # define the predict function which is going to predict the results from ml model based on the given values through html form
 def predict():
