@@ -60,14 +60,12 @@ const LoginPage = () => {
       <Box
         height="100vh"
         background="#F3FCFF"
-        backgroundRepeat="no-repeat"
-        backgroundPosition="right"
         backgroundSize="auto 100%"
         minHeight={[700, 640].map((height) => `${height}px`)}
       >
         <Container height="100%">
           <Flex height="100%" direction="column" justify="center">
-            <Flex justify={["center", "center", "center", "start"]}>
+            <Flex justify={["center", "center", "center", "center"]}>
               <Card
                 width="100%"
                 minWidth="256px"
@@ -75,7 +73,6 @@ const LoginPage = () => {
                 paddingX={["2.5rem", "3.5rem", "4rem"]}
                 paddingTop={["5rem"]}
                 paddingBottom={["6rem"]}
-                marginLeft={[0, 0, 0, "10%"]}
               >
                 <Headline4 color={theme.colors.secondary} marginBottom="12px">
                   Decode Hackathon

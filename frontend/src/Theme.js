@@ -11,7 +11,7 @@ const breakpoints = createBreakpoints({
 const theme = extendTheme({
   colors: {
     primary: "#428198",
-    primary_variant: "#004c3f",
+    primary_variant: "#204D5F",
     primary_active: "#002e25",
     secondary: "#212326",
     secondary_variant: "#6b7177",
