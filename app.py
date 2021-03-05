@@ -1,11 +1,8 @@
 # import required packages
 from flask import Flask, render_template, request
-from flask import Blueprint
-import jsonify
 import requests
 import pickle
 import numpy as np
-from flask_restful import Api, Resource, reqparse
 from flask_cors import CORS #comment this on deployment
 import sklearn
 from sklearn.preprocessing import StandardScaler
@@ -13,7 +10,7 @@ from sklearn.preprocessing import StandardScaler
 # create a Flask object
 app = Flask(__name__, static_url_path='', static_folder='frontend/build')
 CORS(app) #comment this on deployment
-api = Api(app)
+
 # load the ml model which we have saved earlier in .pkl format
 model = pickle.load(open('car_price_model.pkl', 'rb'))
 
@@ -32,6 +29,7 @@ def add_movie():
     title=movie_data['title']
 
     return 'Done' + title, 201
+
 @app.route("/predict", methods=['POST'])
 # define the predict function which is going to predict the results from ml model based on the given values through html form
 def predict():
@@ -88,7 +86,6 @@ def predict():
     else:
         return render_template('index.html')
 
-# api.add_resource(PredictApiHandler, '/flask/predict')
 if __name__ == "__main__":
     # run method starts our web service
     # Debug : as soon as I save anything in my structure, server should start again
