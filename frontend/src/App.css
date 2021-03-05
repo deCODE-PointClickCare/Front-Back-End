@@ -1,5 +1,11 @@
 .App {
   text-align: center;
+  background: url('https://www.saimgs.com/imglib/products/logos-hq/logo_4571_hq.png?v=57a84c674ba6349769a1715a86f7550d') left top no-repeat;
+  background-size: 300px 100px;
+  background-color:  rgba(232, 232, 232, 1);
+  color: grey;
+  height: 100%;
+  width: 100%;
 }
 
 .App-logo {
@@ -35,4 +41,41 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+.content {
+  margin: auto;
+  margin-top: 20px;
+  width: 70%;
+  height: auto;
+  background-color:white;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.title {
+  padding-top: 100px;
+  text-align: center;
+  
+  font-weight: 600;
+  font-size: 1.5em;
+  letter-spacing: 0.15rem;
+  color:grey;
+}
+
+label {
+  color: #333;
+}
+
+.result-container {
+  text-align: center;
+  font-weight: 600;
+  font-size: 4em;
+  letter-spacing: 0.15rem;
+  padding: 20px 0 0;
+}
+
+#result {
+  color: #000;
 }
