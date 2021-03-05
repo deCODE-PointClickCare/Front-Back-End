@@ -25,7 +25,7 @@ def predict():
 
     race = race_map[data['race']]
     gender = gender_map[data['gender']]
-    age = data['age']
+    age = age_map[data['age']]
     admission_type_id = data['admission_type_id']
     discharge_disposition_id = data['discharge_disposition_id']
     admission_source_id = data['admission_source_id']

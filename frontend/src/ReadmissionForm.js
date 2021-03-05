@@ -136,8 +136,8 @@ class ReadmissionForm extends Component {
                 <Form.Label>Age</Form.Label>
                 <Form.Control
                   as="select"
-                  value={formData.select1}
-                  name="select1"
+                  value={formData.age}
+                  name="age"
                   onChange={this.handleChange}
                 >
                   <option>0-10</option>
