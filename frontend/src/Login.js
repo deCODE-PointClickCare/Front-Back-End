@@ -15,15 +15,10 @@ import {
 import { ArrowBackIcon, ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { ButtonPrimary } from "./components/Button";
 import { Card, Container } from "./components/Layout";
-import {
-  Body2,
-  Headline4,
-  HeadlineVarient,
-  Link,
-} from "./components/Text";
+import { Body2, Headline4, HeadlineVarient, Link } from "./components/Text";
 import theme from "./Theme";
 import { Formik, Form, Field } from "formik";
-import history from './history';
+import history from "./history";
 
 const emailRegex = new RegExp(
   "^[\\w.\\-]{1,100}@[\\w.\\-]{1,100}\\.[A-Za-z]{2,4}$"
@@ -155,15 +150,14 @@ const LoginPage = () => {
                         marginTop="24px"
                         isLoading={props.isSubmitting}
                         type="submit"
-                        onClick={() => history.push('/ReadmissionForm')}
+                        onClick={() => history.push("/ReadmissionForm")}
                       >
                         Log in
                       </ButtonPrimary>
                     </Form>
                   )}
                 </Formik>
-                <Body2 marginTop="36px">
-                </Body2>
+                <Body2 marginTop="36px"></Body2>
               </Card>
             </Flex>
           </Flex>

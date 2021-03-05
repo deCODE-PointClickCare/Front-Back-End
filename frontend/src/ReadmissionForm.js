@@ -25,6 +25,7 @@ class ReadmissionForm extends Component {
         num_procedures: 1,
         num_medications: 1,
         number_outpatient: 1,
+        number_emergency: 1,
         number_inpatient: 1,
         diag_1: 1,
         diag_2: 1,
@@ -49,7 +50,7 @@ class ReadmissionForm extends Component {
         tolazamide: 1,
         examide: 1,
         citoglipton: 1,
-        insulin: 1
+        insulin: 1,
       },
       result: "",
     };
@@ -66,7 +67,6 @@ class ReadmissionForm extends Component {
   };
 
   handlePredictClick = (event) => {
-
     const formData = this.state.formData;
     this.setState({ isLoading: true });
     fetch("http://127.0.0.1:5000/prediction/", {
@@ -130,7 +130,6 @@ class ReadmissionForm extends Component {
                   <option>Other</option>
                 </Form.Control>
               </Form.Group>
-
             </Form.Row>
             <Form.Row>
               <Form.Group as={Col}>
@@ -152,7 +151,7 @@ class ReadmissionForm extends Component {
                   <option>100+</option>
                 </Form.Control>
               </Form.Group>
-               <Form.Group as={Col}>
+              <Form.Group as={Col}>
                 <Form.Label>Admission Type</Form.Label>
                 <Form.Control
                   as="select"
@@ -167,7 +166,7 @@ class ReadmissionForm extends Component {
                   <option>6</option>
                 </Form.Control>
               </Form.Group>
-               <Form.Group as={Col}>
+              <Form.Group as={Col}>
                 <Form.Label>Discharge Disposition</Form.Label>
                 <Form.Control
                   as="select"
@@ -182,7 +181,7 @@ class ReadmissionForm extends Component {
                   <option>6</option>
                 </Form.Control>
               </Form.Group>
-            <Form.Group as={Col}>
+              <Form.Group as={Col}>
                 <Form.Label>Admission Source</Form.Label>
                 <Form.Control
                   as="select"
@@ -197,7 +196,7 @@ class ReadmissionForm extends Component {
                   <option>6</option>
                 </Form.Control>
               </Form.Group>
-             <Form.Group as={Col}>
+              <Form.Group as={Col}>
                 <Form.Label>Time in hospital</Form.Label>
                 <Form.Control
                   as="select"
@@ -212,7 +211,7 @@ class ReadmissionForm extends Component {
                   <option>6</option>
                 </Form.Control>
               </Form.Group>
-            <Form.Group as={Col}>
+              <Form.Group as={Col}>
                 <Form.Label>Number of lab procedures</Form.Label>
                 <Form.Control
                   type="text"
@@ -221,7 +220,7 @@ class ReadmissionForm extends Component {
                   onChange={this.handleChange}
                 />
               </Form.Group>
-            <Form.Group as={Col}>
+              <Form.Group as={Col}>
                 <Form.Label>Number of procedures</Form.Label>
                 <Form.Control
                   type="text"
@@ -230,7 +229,7 @@ class ReadmissionForm extends Component {
                   onChange={this.handleChange}
                 />
               </Form.Group>
-             <Form.Group as={Col}>
+              <Form.Group as={Col}>
                 <Form.Label>Number of medications</Form.Label>
                 <Form.Control
                   type="text"
@@ -239,7 +238,7 @@ class ReadmissionForm extends Component {
                   onChange={this.handleChange}
                 />
               </Form.Group>
-            <Form.Group as={Col}>
+              <Form.Group as={Col}>
                 <Form.Label>Number of outpatient visits</Form.Label>
                 <Form.Control
                   type="text"
@@ -248,16 +247,16 @@ class ReadmissionForm extends Component {
                   onChange={this.handleChange}
                 />
               </Form.Group>
-            <Form.Group as={Col}>
+              <Form.Group as={Col}>
                 <Form.Label>Number of emergency visits</Form.Label>
                 <Form.Control
                   type="text"
-                  value={formData.num_emergency}
-                  name="num_emergency"
+                  value={formData.number_emergency}
+                  name="number_emergency"
                   onChange={this.handleChange}
                 />
               </Form.Group>
-             <Form.Group as={Col}>
+              <Form.Group as={Col}>
                 <Form.Label>Number of inpatient visits</Form.Label>
                 <Form.Control
                   type="text"
@@ -265,34 +264,34 @@ class ReadmissionForm extends Component {
                   name="number_inpatient"
                   onChange={this.handleChange}
                 />
-             <Form.Group as={Col}>
-                <Form.Label>Primary Diagnosis</Form.Label>
-                <Form.Control
-                  as="select"
-                  value={formData.diag_1}
-                  name="diag_1"
-                  onChange={this.handleChange}
-                >
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>6</option>
-                </Form.Control>
-                <Form.Label>Secondary Diagnosis</Form.Label>
-                <Form.Control
-                  as="select"
-                  value={formData.diag_2}
-                  name="diag_2"
-                  onChange={this.handleChange}
-                >
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>6</option>
-                </Form.Control>
-              </Form.Group>
+                <Form.Group as={Col}>
+                  <Form.Label>Primary Diagnosis</Form.Label>
+                  <Form.Control
+                    as="select"
+                    value={formData.diag_1}
+                    name="diag_1"
+                    onChange={this.handleChange}
+                  >
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>6</option>
+                  </Form.Control>
+                  <Form.Label>Secondary Diagnosis</Form.Label>
+                  <Form.Control
+                    as="select"
+                    value={formData.diag_2}
+                    name="diag_2"
+                    onChange={this.handleChange}
+                  >
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>6</option>
+                  </Form.Control>
+                </Form.Group>
                 <Form.Label>Tertiary Diagnosis</Form.Label>
                 <Form.Control
                   as="select"
@@ -306,32 +305,36 @@ class ReadmissionForm extends Component {
                   <option>4</option>
                   <option>6</option>
                 </Form.Control>
-                 <Form.Label>Total Diagnosis</Form.Label>
+                <Form.Label>Total Diagnosis</Form.Label>
                 <Form.Control
                   type="text"
                   value={formData.number_diagnosis}
                   name="number_diagnosis"
-                  placeholder = "number of diagnosis"
+                  placeholder="number of diagnosis"
                   onChange={this.handleChange}
                 />
               </Form.Group>
               <Form.Group>
-                <Form.Label>Prescribed medications (select multiple)</Form.Label>
+                <Form.Label>
+                  Prescribed medications (select multiple)
+                </Form.Label>
                 <Form.Control
-                    name="metformin"
-                    onChange = {this.handleChange}
-                    as="select" multiple>
+                  name="metformin"
+                  onChange={this.handleChange}
+                  as="select"
+                  multiple
+                >
                   <option>metformin</option>
                   <option>repaglinide</option>
                   <option>nateglinide</option>
                   <option>nateglinide</option>
-                   <option>chlorpropamide</option>
+                  <option>chlorpropamide</option>
                   <option>glimepiride</option>
                   <option>acetohexamide</option>
                   <option>glipizide</option>
                   <option>glyburide</option>
                   <option>tolbutamide</option>
-                   <option>pioglitazone</option>
+                  <option>pioglitazone</option>
                   <option>rosiglitazone</option>
                   <option>acarbose</option>
                   <option>miglitol</option>
