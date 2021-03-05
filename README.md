@@ -21,3 +21,13 @@ Come up with 3 or 4 models(.e.g decision tree,Linear regressionRandom Forest,lig
  Choose your best model and show case your result in interactive front end.
  
  * Front end should also contain different data wrangling like (how many medical specialities you have chosen and how many you have discarded,age and readmission, gender and readmission, race and readmission, A1Cresult and readmission) .
+
+# Setting up the project
+1. Set up a virtual environment for Python, If using PyCharm, follow the steps on this site: https://www.jetbrains.com/help/pycharm/creating-virtual-environment.html.
+2. After setting up the virtual environment, run the command: `pip install -r requirements.txt`. This will install all the necessary Python libaries.
+3. In the frontend folder, run `npm install`. 
+
+# Running the project 
+1. For backend: run the command `run app.py` to get the backend up. It will be on `localhost:5000`
+2. For UI: run `npm start` in the frontend folder. It will be on `localhost:3000`
+
