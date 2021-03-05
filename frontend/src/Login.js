@@ -23,6 +23,7 @@ import {
 } from "./components/Text";
 import theme from "./Theme";
 import { Formik, Form, Field } from "formik";
+import history from './history';
 
 const emailRegex = new RegExp(
   "^[\\w.\\-]{1,100}@[\\w.\\-]{1,100}\\.[A-Za-z]{2,4}$"
@@ -154,6 +155,7 @@ const LoginPage = () => {
                         marginTop="24px"
                         isLoading={props.isSubmitting}
                         type="submit"
+                        onClick={() => history.push('/ReadmissionForm')}
                       >
                         Log in
                       </ButtonPrimary>
