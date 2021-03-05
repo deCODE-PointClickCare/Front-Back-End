@@ -6,6 +6,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.css";
+import history from "./history";
 
 class ReadmissionForm extends Component {
   constructor(props) {
@@ -79,9 +80,9 @@ class ReadmissionForm extends Component {
     })
       .then((response) => response.json())
       .then((response) => {
-        this.setState({
-          result: response.result,
-          isLoading: false,
+        history.push({
+          pathname: "/Graphs",
+          state: { result: response.result },
         });
       });
   };

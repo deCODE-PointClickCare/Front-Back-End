@@ -2,12 +2,17 @@ import { useState, useEffect } from "react";
 import { LineChart, Line, CartesianGrid, XAxis, YAxis } from "recharts";
 import * as d3 from "d3";
 import diabetic_data from "./diabetic_data.csv";
+import { useLocation } from "react-router-dom";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import history from "./history";
 
 const age_readmitted_data = {};
 const race_readmitted_data = {};
 const inpatient_readmitted_data = {};
 
 function Graphs() {
+  const location = useLocation();
   const [ageData, setAgeData] = useState([]);
   const [raceData, setRaceData] = useState([]);
   const [inpatientData, setInpatientData] = useState([]);
@@ -79,10 +84,13 @@ function Graphs() {
 
   return (
     <>
-      {result === "" ? null : (
+      {location.state.result === "" ? null : (
         <Row>
           <Col className="result-container">
-            <h5 id="result">{result}</h5>
+            <h5>Patient Readmission Probability</h5>
+            <h5 id="result">
+              {(location.state.result * 100).toFixed(2) + "%"}
+            </h5>
           </Col>
         </Row>
       )}
