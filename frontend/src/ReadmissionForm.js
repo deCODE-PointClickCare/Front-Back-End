@@ -72,6 +72,7 @@ class ReadmissionForm extends Component {
         },
         method: "POST",
         body: JSON.stringify(formData),
+        mode: "no-cors",
       }
     )
       .then((response) => response.json())
