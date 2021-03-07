@@ -11,6 +11,11 @@ CORS(app)  # comment this on deployment
 model = pickle.load(open('diabetes_readmission_model.pkl', 'rb'))
 
 
+@app.route('/')
+def index():
+    return "<h1>deCODE PointClickCare</h1>"
+
+
 # this gets called in readmissionform
 @app.route('/prediction/', methods=['POST'])
 def predict():
@@ -92,4 +97,4 @@ def predict():
 if __name__ == "__main__":
     # run method starts our web service
     # Debug : as soon as I save anything in my structure, server should start again
-    app.run(debug=True, port=5001)
+    app.run()
