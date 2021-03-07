@@ -1,19 +1,28 @@
 import { useState, useEffect } from "react";
-import { LineChart, Line, CartesianGrid, XAxis, YAxis, BarChart, Bar, Tooltip, Legend } from 'recharts';
+import {
+  LineChart,
+  Line,
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  BarChart,
+  Bar,
+  Tooltip,
+  Legend,
+} from "recharts";
 import * as d3 from "d3";
 import diabetic_data from "./diabetic_data.csv";
-import age_avg from './age_avg.csv';
-import race_avg from './race_avg.csv';
+import age_avg from "./age_avg.csv";
+import race_avg from "./race_avg.csv";
 import { useLocation } from "react-router-dom";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import history from "./history";
 
 const age_readmitted_data = {};
 const race_readmitted_data = {};
 const inpatient_readmitted_data = {};
-const age_avg_readmitted_data = []
-const race_avg_readmitted_data = []
+const age_avg_readmitted_data = [];
+const race_avg_readmitted_data = [];
 
 function Graphs() {
   const location = useLocation();
@@ -87,14 +96,19 @@ function Graphs() {
       inpatient_graph_data();
     });
 
-    d3.csv(age_avg, function(age_avg) {
-        age_avg_readmitted_data.push({"age": age_avg["age"], "readmission_number": parseFloat(age_avg["avg(prediction)"]) })
+    d3.csv(age_avg, function (age_avg) {
+      age_avg_readmitted_data.push({
+        age: age_avg["age"],
+        readmission_number: parseFloat(age_avg["avg(prediction)"]),
+      });
     }).then(() => setAgeAvgData(age_avg_readmitted_data));
 
-    d3.csv(race_avg, function(race_avg) {
-        race_avg_readmitted_data.push({"race": race_avg["race"], "readmission_number": parseFloat(race_avg["avg(prediction)"]) })
+    d3.csv(race_avg, function (race_avg) {
+      race_avg_readmitted_data.push({
+        race: race_avg["race"],
+        readmission_number: parseFloat(race_avg["avg(prediction)"]),
+      });
     }).then(() => setRaceAvgData(race_avg_readmitted_data));
-
   }, []);
 
   return (
@@ -154,33 +168,32 @@ function Graphs() {
           </LineChart>
         </>
       )}
-      {ageAvgData &&
-            <>
-                <h1>Age vs. Predicted Readmission Average</h1>
-                <BarChart width={600} height={300} data={ageAvgData}>
-                    <CartesianGrid stroke="#ccc" />
-                    <XAxis dataKey="age" />
-                    <YAxis />
-                    <Tooltip />
-                    <Legend />
-                    <Bar dataKey="readmission_number" fill="#8884d8" name="avg" />
-                </BarChart>
-            </>
-        }
-        {raceAvgData &&
-            <>
-                <h1>Race vs. Predicted Readmission Average</h1>
-                <BarChart width={600} height={300} data={raceAvgData}>
-                    <CartesianGrid stroke="#ccc" />
-                    <XAxis dataKey="race" />
-                    <YAxis />
-                    <Tooltip />
-                    <Legend />
-                    <Bar dataKey="readmission_number" fill="#8884d8" name="avg" />
-                </BarChart>
-            </>
-        }
-
+      {ageAvgData && (
+        <>
+          <h1>Age vs. Predicted Readmission Average</h1>
+          <BarChart width={600} height={300} data={ageAvgData}>
+            <CartesianGrid stroke="#ccc" />
+            <XAxis dataKey="age" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Bar dataKey="readmission_number" fill="#8884d8" name="avg" />
+          </BarChart>
+        </>
+      )}
+      {raceAvgData && (
+        <>
+          <h1>Race vs. Predicted Readmission Average</h1>
+          <BarChart width={600} height={300} data={raceAvgData}>
+            <CartesianGrid stroke="#ccc" />
+            <XAxis dataKey="race" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Bar dataKey="readmission_number" fill="#8884d8" name="avg" />
+          </BarChart>
+        </>
+      )}
     </>
   );
 }

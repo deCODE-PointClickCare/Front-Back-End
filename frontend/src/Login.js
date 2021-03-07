@@ -8,14 +8,12 @@ import {
   Input,
   InputGroup,
   InputRightElement,
-  Link as ChakraLink,
   Stack,
-  useToast,
 } from "@chakra-ui/react";
-import { ArrowBackIcon, ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
+import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { ButtonPrimary } from "./components/Button";
 import { Card, Container } from "./components/Layout";
-import { Body2, Headline4, HeadlineVarient, Link } from "./components/Text";
+import { Body2, Headline4, HeadlineVarient } from "./components/Text";
 import theme from "./Theme";
 import { Formik, Form, Field } from "formik";
 import history from "./history";
@@ -25,7 +23,6 @@ const emailRegex = new RegExp(
 );
 
 const LoginPage = () => {
-  const toast = useToast();
   const [showPassword, setShowPassword] = useState(false);
 
   const validateEmail = (email) => {
@@ -75,12 +72,7 @@ const LoginPage = () => {
                 <HeadlineVarient fontSize="20px !important" marginBottom="2rem">
                   Log in
                 </HeadlineVarient>
-                <Formik
-                  initialValues={{ email: "", password: "" }}
-                  onSubmit={(values, actions) => {
-                    const { email, password } = values;
-                  }}
-                >
+                <Formik initialValues={{ email: "", password: "" }}>
                   {(props) => (
                     <Form>
                       <Stack spacing="16px">
