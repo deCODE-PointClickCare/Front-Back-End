@@ -17,7 +17,7 @@ def index():
 
 
 # this gets called in readmissionform
-@app.route('/prediction/', methods=['POST'])
+@app.route('/api/prediction', methods=['POST'])
 def predict():
     data = request.get_json()
 

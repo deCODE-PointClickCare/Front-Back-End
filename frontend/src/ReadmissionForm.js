@@ -63,7 +63,7 @@ class ReadmissionForm extends Component {
   handlePredictClick = (event) => {
     const formData = this.state.formData;
     this.setState({ isLoading: true });
-    fetch("http://127.0.0.1:5001/prediction/", {
+    fetch("/api/prediction", {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
