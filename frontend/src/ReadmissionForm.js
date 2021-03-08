@@ -63,18 +63,14 @@ class ReadmissionForm extends Component {
   handlePredictClick = (event) => {
     const formData = this.state.formData;
     this.setState({ isLoading: true });
-    fetch(
-      "https://decode-pointclickcare-backend.herokuapp.com/api/prediction",
-      {
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        method: "POST",
-        body: JSON.stringify(formData),
-        mode: "no-cors",
-      }
-    )
+    fetch("/api/prediction", {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify(formData),
+    })
       .then((response) => response.json())
       .then((response) => {
         history.push({

@@ -5,6 +5,7 @@ import pickle
 
 # create a Flask object
 app = Flask(__name__)
+CORS(app)
 
 # load the ml model which we have saved earlier in .pkl format - rn I'm using Maria's model
 model = pickle.load(open('diabetes_readmission_model.pkl', 'rb'))
